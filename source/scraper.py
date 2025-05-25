@@ -9,7 +9,8 @@ class Scraper:
         self.__baseUrl = baseUrl
     
     def extractUrls(self) -> list[str]:
-        resposta = get(self.__urlBase)
+        print(f"Scraping URLs from {self.__baseUrl}...")
+        resposta = get(self.__baseUrl)
         resposta.raise_for_status()
         padrao = r'href="(https://portal\.inmet\.gov\.br/uploads/dadoshistoricos/\d{4}\.zip)"'
         urls = findall(padrao, resposta.text)
